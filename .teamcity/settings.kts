@@ -50,6 +50,7 @@ project {
     buildType(Build)
 
     params {
+        text("teamcity.internal.clouds.executors.enabled", "true", allowEmpty = true)
         param("teamcity.internal.telemetry.metrics.internal.enabled", "true")
         text("teamcity.internal.aws.connection.allowedForSubProjectsEnabled", "true", allowEmpty = true)
         hashiCorpVaultParameter {
@@ -161,7 +162,7 @@ project {
         hashiCorpVaultConnection {
             id = "PROJECT_EXT_20"
             name = "HashiCorp Vault - ldap"
-            vaultId = "ldap"
+            namespace = "ldap"
             authMethod = ldap {
                 path = "path"
                 username = "username"
@@ -203,6 +204,11 @@ project {
             podSpecification = runContainer {
                 dockerImage = "jetbrains/teamcity-agent"
             }
+        }
+        feature {
+            id = "PROJECT_EXT_31"
+            type = "BuildExecutor"
+            param("executorType", "FakeExecutor")
         }
         buildMetrics {
             id = "PROJECT_EXT_7"
