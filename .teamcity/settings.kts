@@ -208,6 +208,7 @@ project {
         feature {
             id = "PROJECT_EXT_31"
             type = "BuildExecutor"
+            param("profileName", "meow")
             param("executorType", "FakeExecutor")
         }
         buildMetrics {
