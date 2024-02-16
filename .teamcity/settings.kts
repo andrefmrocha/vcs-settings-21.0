@@ -210,6 +210,7 @@ project {
             type = "BuildExecutor"
             param("profileName", "meow")
             param("executorType", "FakeExecutor")
+            param("system.cloud.profile_id", "PROJECT_EXT_31")
         }
         buildMetrics {
             id = "PROJECT_EXT_7"
