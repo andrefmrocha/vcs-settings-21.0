@@ -205,14 +205,6 @@ project {
                 dockerImage = "jetbrains/teamcity-agent"
             }
         }
-        feature {
-            id = "PROJECT_EXT_31"
-            type = "BuildExecutor"
-            param("profileName", "meow")
-            param("executorType", "FakeExecutor")
-            param("system.cloud.profile_id", "PROJECT_EXT_31")
-            param("enabled", "true")
-        }
         buildMetrics {
             id = "PROJECT_EXT_7"
             param("telemetry.metrics.enabled", "false")
