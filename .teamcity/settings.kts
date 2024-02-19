@@ -295,8 +295,8 @@ object Build : BuildType({
 
     params {
         param("teamcity.vault.set.env", "false")
-        param("inheritedParamTest", "meow")
         param("teamcity.vault.ssh.set.env", "true")
+        param("inheritedParamTest", "lol")
     }
 
     vcs {
