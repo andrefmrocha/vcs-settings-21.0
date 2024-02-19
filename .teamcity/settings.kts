@@ -71,11 +71,11 @@ project {
         param("teamcity.telemetry.events.enabled", "true")
         checkbox("edffrg", "",
                   checked = "true")
-        text("inheritedParamTest", "value", allowEmpty = true)
         hashiCorpVaultParameter {
             name = "meowmeow"
             query = "meow"
         }
+        text("inheritedParamTest", "value", allowEmpty = true)
     }
 
     features {
