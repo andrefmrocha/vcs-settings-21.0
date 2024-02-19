@@ -75,7 +75,7 @@ project {
             name = "meowmeow"
             query = "meow"
         }
-        text("inheritedParamTest", "value", allowEmpty = true)
+        text("inheritedParamTest", "meow", allowEmpty = true)
     }
 
     features {
