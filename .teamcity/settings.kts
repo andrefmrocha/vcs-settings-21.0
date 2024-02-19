@@ -66,6 +66,8 @@ project {
               regex = "regex")
         param("system.meow", "meowww")
         text("teamcity.internal.aws.connection.allowedForBuildsEnabled", "true", description = "this is a description", display = ParameterDisplay.HIDDEN, allowEmpty = true)
+        checkbox("checkbox", "",
+                  checked = "true", unchecked = "meow")
         param("teamcity.telemetry.events.enabled", "true")
         checkbox("edffrg", "",
                   checked = "true")
