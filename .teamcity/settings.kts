@@ -57,7 +57,7 @@ project {
             name = "remote"
             query = "secret/data/path!/meias"
         }
-        text("teamcity.internal.parameters.newDialog.enabled", "false", allowEmpty = true)
+        text("teamcity.internal.parameters.newDialog.enabled", "true", allowEmpty = true)
         param("teamcity.internal.kubernetes.executor.enabled", "true")
         param("teamcity.internal.telemetry.events.otlp.enabled", "true")
         param("teamcity.internal.executor.enabled", "true")
