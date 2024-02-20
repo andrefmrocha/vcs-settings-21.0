@@ -65,9 +65,9 @@ project {
         text("Regex", "regex",
               regex = "regex")
         param("system.meow", "meowww")
-        text("teamcity.internal.aws.connection.allowedForBuildsEnabled", "true", description = "this is a description", display = ParameterDisplay.HIDDEN, allowEmpty = true)
         checkbox("checkbox", "",
                   checked = "true", unchecked = "meow")
+        text("teamcity.internal.aws.connection.allowedForBuildsEnabled", "true", description = "this is a description", display = ParameterDisplay.HIDDEN, allowEmpty = true)
         param("teamcity.telemetry.events.enabled", "true")
         checkbox("edffrg", "",
                   checked = "true")
@@ -75,7 +75,7 @@ project {
             name = "meowmeow"
             query = "meow"
         }
-        text("inheritedParamTest", "value", allowEmpty = true)
+        param("inheritedParamTest", "meow")
     }
 
     features {
@@ -295,8 +295,8 @@ object Build : BuildType({
 
     params {
         param("teamcity.vault.set.env", "false")
-        param("teamcity.vault.ssh.set.env", "true")
         param("inheritedParamTest", "value")
+        param("teamcity.vault.ssh.set.env", "true")
     }
 
     vcs {
