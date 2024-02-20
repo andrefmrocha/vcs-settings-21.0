@@ -71,11 +71,11 @@ project {
         param("teamcity.telemetry.events.enabled", "true")
         checkbox("edffrg", "",
                   checked = "true")
+        param("inheritedParamTest", "value")
         hashiCorpVaultParameter {
             name = "meowmeow"
             query = "meow"
         }
-        param("inheritedParamTest", "value")
     }
 
     features {
@@ -295,8 +295,8 @@ object Build : BuildType({
 
     params {
         param("teamcity.vault.set.env", "false")
-        param("inheritedParamTest", "value")
         param("teamcity.vault.ssh.set.env", "true")
+        param("inheritedParamTest", "meow")
     }
 
     vcs {
