@@ -1,7 +1,6 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.amazonEC2CloudImage
 import jetbrains.buildServer.configs.kotlin.amazonEC2CloudProfile
-import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.kubernetesCloudImage
 import jetbrains.buildServer.configs.kotlin.kubernetesCloudProfile
@@ -164,7 +163,7 @@ project {
         hashiCorpVaultConnection {
             id = "PROJECT_EXT_20"
             name = "HashiCorp Vault - ldap"
-            namespace = "ldap"
+            vaultId = "ldap"
             authMethod = ldap {
                 path = "path"
                 username = "username"
@@ -206,6 +205,13 @@ project {
             podSpecification = runContainer {
                 dockerImage = "jetbrains/teamcity-agent"
             }
+        }
+        feature {
+            id = "PROJECT_EXT_31"
+            type = "BuildExecutor"
+            param("profileName", "meow")
+            param("executorType", "KubernetesExecutor")
+            param("connectionId", "PROJECT_EXT_14")
         }
         buildMetrics {
             id = "PROJECT_EXT_7"
@@ -295,8 +301,8 @@ object Build : BuildType({
 
     params {
         param("teamcity.vault.set.env", "false")
-        param("teamcity.vault.ssh.set.env", "true")
         param("inheritedParamTest", "lol")
+        param("teamcity.vault.ssh.set.env", "true")
     }
 
     vcs {
@@ -326,13 +332,14 @@ object Build : BuildType({
             param("teamcity.kubernetes.executor.container.image", "python")
             param("teamcity.kubernetes.executor.pull.policy", "IfNotPresent")
         }
-        gradle {
+        step {
             name = "Test"
+            type = "gradle-runner"
             executionMode = BuildStep.ExecutionMode.DEFAULT
-            tasks = "clean build"
-            useGradleWrapper = true
             param("teamcity.kubernetes.executor.container.image", "registry.jetbrains.team/p/tc/docker/teamcity-minimal-agent-staging:EAP-linux")
             param("teamcity.coverage.idea.includePatterns", "*")
+            param("ui.gradleRunner.gradle.wrapper.useWrapper", "true")
+            param("ui.gradleRunner.gradle.tasks.names", "clean build")
             param("teamcity.coverage.jacoco.patterns", "+:*")
             param("teamcity.coverage.emma.instr.parameters", "-ix -*Test*")
             param("teamcity.coverage.emma.include.source", "true")
@@ -402,14 +409,15 @@ object TeamcityAwsLambdaPluginExample_Build : BuildType({
     }
 
     steps {
-        gradle {
+        step {
+            type = "gradle-runner"
             enabled = false
             executionMode = BuildStep.ExecutionMode.DEFAULT
-            tasks = "clean build"
-            useGradleWrapper = true
-            gradleWrapperPath = ""
             param("teamcity.coverage.idea.includePatterns", "*")
+            param("ui.gradleRunner.gradle.wrapper.useWrapper", "true")
+            param("ui.gradleRunner.gradle.tasks.names", "clean build")
             param("teamcity.coverage.jacoco.patterns", "+:*")
+            param("ui.gradleRunner.gradle.wrapper.path", "")
             param("teamcity.coverage.emma.instr.parameters", "-ix -*Test*")
             param("teamcity.coverage.emma.include.source", "true")
             param("teamcity.tool.jacoco", "%teamcity.tool.jacoco.DEFAULT%")
@@ -461,13 +469,14 @@ object TeamcityAwsLambdaPluginExample_TeamcityAwsLambdaPluginExample_Build : Bui
     }
 
     steps {
-        gradle {
+        step {
+            type = "gradle-runner"
             executionMode = BuildStep.ExecutionMode.DEFAULT
-            tasks = "clean build"
-            useGradleWrapper = true
-            gradleWrapperPath = ""
             param("teamcity.coverage.idea.includePatterns", "*")
+            param("ui.gradleRunner.gradle.wrapper.useWrapper", "true")
+            param("ui.gradleRunner.gradle.tasks.names", "clean build")
             param("teamcity.coverage.jacoco.patterns", "+:*")
+            param("ui.gradleRunner.gradle.wrapper.path", "")
             param("teamcity.coverage.emma.instr.parameters", "-ix -*Test*")
             param("teamcity.coverage.emma.include.source", "true")
             param("teamcity.tool.jacoco", "%teamcity.tool.jacoco.DEFAULT%")
