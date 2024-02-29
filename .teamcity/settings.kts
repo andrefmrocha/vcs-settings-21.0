@@ -206,6 +206,13 @@ project {
                 dockerImage = "jetbrains/teamcity-agent"
             }
         }
+        feature {
+            id = "PROJECT_EXT_33"
+            type = "BuildExecutor"
+            param("profileName", "meow")
+            param("executorType", "KubernetesExecutor")
+            param("connectionId", "PROJECT_EXT_14")
+        }
         buildMetrics {
             id = "PROJECT_EXT_7"
             param("telemetry.metrics.enabled", "false")
