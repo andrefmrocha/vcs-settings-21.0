@@ -213,13 +213,6 @@ project {
             param("executorType", "KubernetesExecutor")
             param("connectionId", "PROJECT_EXT_14")
         }
-        feature {
-            id = "PROJECT_EXT_35"
-            type = "BuildExecutor"
-            param("profileName", "meow meow")
-            param("executorType", "KubernetesExecutor")
-            param("connectionId", "[object Object]")
-        }
         buildMetrics {
             id = "PROJECT_EXT_7"
             param("telemetry.metrics.enabled", "false")
