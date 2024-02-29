@@ -163,7 +163,7 @@ project {
         hashiCorpVaultConnection {
             id = "PROJECT_EXT_20"
             name = "HashiCorp Vault - ldap"
-            vaultId = "ldap"
+            namespace = "ldap"
             authMethod = ldap {
                 path = "path"
                 username = "username"
@@ -205,6 +205,13 @@ project {
             podSpecification = runContainer {
                 dockerImage = "jetbrains/teamcity-agent"
             }
+        }
+        feature {
+            id = "PROJECT_EXT_31"
+            type = "BuildExecutor"
+            param("profileName", "meow")
+            param("executorType", "KubernetesExecutor")
+            param("connectionId", "PROJECT_EXT_14")
         }
         buildMetrics {
             id = "PROJECT_EXT_7"
