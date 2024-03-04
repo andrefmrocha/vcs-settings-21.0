@@ -163,7 +163,7 @@ project {
         hashiCorpVaultConnection {
             id = "PROJECT_EXT_20"
             name = "HashiCorp Vault - ldap"
-            namespace = "ldap"
+            vaultId = "ldap"
             authMethod = ldap {
                 path = "path"
                 username = "username"
@@ -213,6 +213,13 @@ project {
             param("executorType", "KubernetesExecutor")
             param("system.cloud.profile_id", "PROJECT_EXT_31")
             param("connectionId", "PROJECT_EXT_14")
+            param("templateContainer", """
+                apiVersion: v1
+                kind: Pod
+                spec:
+                  containers:
+                    - name: template-container
+            """.trimIndent())
         }
         feature {
             id = "PROJECT_EXT_33"
