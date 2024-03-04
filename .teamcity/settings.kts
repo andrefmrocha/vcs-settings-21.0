@@ -211,6 +211,7 @@ project {
             type = "BuildExecutor"
             param("profileName", "yaml test")
             param("executorType", "KubernetesExecutor")
+            param("system.cloud.profile_id", "PROJECT_EXT_31")
             param("connectionId", "PROJECT_EXT_14")
         }
         feature {
