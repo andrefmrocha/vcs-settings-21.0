@@ -218,6 +218,7 @@ project {
             type = "BuildExecutor"
             param("profileName", "meowmoew")
             param("executorType", "KubernetesExecutor")
+            param("system.cloud.profile_id", "PROJECT_EXT_36")
             param("connectionId", "PROJECT_EXT_14")
         }
         buildMetrics {
