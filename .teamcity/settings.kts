@@ -132,7 +132,7 @@ project {
             id = "PROJECT_EXT_14"
             type = "OAuthProvider"
             param("secure:clientKeyData", "credentialsJSON:b9037516-a79d-4f62-b391-896da352e0e4")
-            param("displayName", "Kubernetes Connection")
+            param("displayName", "Minikube")
             param("secure:clientCertData", "credentialsJSON:45f1806b-232f-475e-a783-6adbd7b22047")
             param("apiServerUrl", "https://192.168.49.2:8443")
             param("authStrategy", "client-cert")
