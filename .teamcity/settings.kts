@@ -163,12 +163,13 @@ project {
         hashiCorpVaultConnection {
             id = "PROJECT_EXT_20"
             name = "HashiCorp Vault - ldap"
-            namespace = "ldap"
+            vaultId = "ldap"
             authMethod = ldap {
                 path = "path"
                 username = "username"
                 password = "credentialsJSON:636e34b4-d02e-4f27-9d12-141f75e8832b"
             }
+            param("connectionBeanId", "PROJECT_EXT_20")
         }
         hashiCorpVaultConnection {
             id = "PROJECT_EXT_21"
