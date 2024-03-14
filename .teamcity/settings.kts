@@ -400,6 +400,7 @@ object Build : BuildType({
     features {
         feature {
             type = "KubernetesExecutor"
+            enabled = false
             param("teamcity.kubernetes.executor.container.agentImage", "jetbrains/teamcity-minimal-agent")
             param("connectionId", "PROJECT_EXT_14")
         }
