@@ -249,12 +249,13 @@ project {
         feature {
             id = "PROJECT_EXT_34"
             type = "OAuthProvider"
+            param("secure:authToken", "credentialsJSON:ccd75b5d-8585-4a36-9beb-5eb4fe9f95a4")
             param("secure:oidcRefreshToken", "credentialsJSON:909a0460-4390-42df-b30f-6be0c2bd0e9f")
             param("oidcClientId", "199438991955-f0mj8jpu7l3m2c8sg2heglphp9krgb8s.apps.googleusercontent.com")
             param("displayName", "Kubernetes Console")
             param("idpIssuerUrl", "https://accounts.google.com")
             param("apiServerUrl", "https://1D9DE0392C8CFAC214189045F2125202.gr7.eu-west-1.eks.amazonaws.com")
-            param("authStrategy", "oidc")
+            param("authStrategy", "token")
             param("namespace", "teamcity-cloud")
             param("secure:caCertData", "credentialsJSON:1e4d1ce4-a7cd-4d3b-beb3-c18222234bd1")
             param("secure:oidcClientSecret", "credentialsJSON:cdc8761b-d16c-4e14-92d8-599f6c033dd7")
