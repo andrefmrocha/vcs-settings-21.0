@@ -252,6 +252,14 @@ project {
             param("secure:oidcClientSecret", "credentialsJSON:cdc8761b-d16c-4e14-92d8-599f6c033dd7")
             param("providerType", "KubernetesConnection")
         }
+        hashiCorpVaultConnection {
+            id = "PROJECT_EXT_35"
+            name = "delete me"
+            authMethod = appRole {
+                roleId = "meow"
+                secretId = "credentialsJSON:b3f9abbb-bd55-436f-a92a-d3c3dac599c6"
+            }
+        }
         feature {
             id = "PROJECT_EXT_36"
             type = "BuildExecutor"
