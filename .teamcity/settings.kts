@@ -251,7 +251,7 @@ project {
             type = "OAuthProvider"
             param("secure:oidcRefreshToken", "credentialsJSON:909a0460-4390-42df-b30f-6be0c2bd0e9f")
             param("oidcClientId", "199438991955-f0mj8jpu7l3m2c8sg2heglphp9krgb8s.apps.googleusercontent.com")
-            param("displayName", "Kubernetes Connection")
+            param("displayName", "Kubernetes Console")
             param("idpIssuerUrl", "https://accounts.google.com")
             param("apiServerUrl", "https://1D9DE0392C8CFAC214189045F2125202.gr7.eu-west-1.eks.amazonaws.com")
             param("authStrategy", "oidc")
