@@ -52,10 +52,6 @@ project {
         text("teamcity.internal.clouds.executors.enabled", "true", allowEmpty = true)
         param("teamcity.internal.telemetry.metrics.internal.enabled", "true")
         text("teamcity.internal.aws.connection.allowedForSubProjectsEnabled", "true", allowEmpty = true)
-        hashiCorpVaultParameter {
-            name = "remote"
-            query = "secret/data/path!/meias"
-        }
         param("teamcity.internal.parameters.newDialog.enabled", "true")
         param("teamcity.internal.kubernetes.executor.enabled", "true")
         param("teamcity.internal.telemetry.events.otlp.enabled", "true")
