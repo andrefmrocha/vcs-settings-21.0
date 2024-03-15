@@ -371,20 +371,6 @@ object Build : BuildType({
             param("teamcity.kubernetes.executor.container.image", "python")
             param("teamcity.kubernetes.executor.pull.policy", "IfNotPresent")
         }
-        step {
-            name = "Test"
-            type = "gradle-runner"
-            executionMode = BuildStep.ExecutionMode.DEFAULT
-            param("teamcity.kubernetes.executor.container.image", "registry.jetbrains.team/p/tc/docker/teamcity-minimal-agent-staging:EAP-linux")
-            param("teamcity.coverage.idea.includePatterns", "*")
-            param("ui.gradleRunner.gradle.wrapper.useWrapper", "true")
-            param("ui.gradleRunner.gradle.tasks.names", "clean build")
-            param("teamcity.coverage.jacoco.patterns", "+:*")
-            param("teamcity.coverage.emma.instr.parameters", "-ix -*Test*")
-            param("teamcity.coverage.emma.include.source", "true")
-            param("teamcity.tool.jacoco", "%teamcity.tool.jacoco.DEFAULT%")
-            param("teamcity.kubernetes.executor.pull.policy", "IfNotPresent")
-        }
         script {
             name = "Output secret"
             enabled = false
