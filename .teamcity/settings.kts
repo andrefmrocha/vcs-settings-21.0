@@ -349,8 +349,8 @@ object Build : BuildType({
 
     params {
         param("teamcity.vault.set.env", "false")
-        param("inheritedParamTest", "lol")
         param("teamcity.vault.ssh.set.env", "true")
+        param("inheritedParamTest", "meow")
     }
 
     vcs {
@@ -360,6 +360,7 @@ object Build : BuildType({
     steps {
         script {
             name = "Run In Java 11"
+            executionMode = BuildStep.ExecutionMode.DEFAULT
             scriptContent = """
                 java -version
                 
@@ -370,6 +371,7 @@ object Build : BuildType({
         }
         script {
             name = "Run In Python"
+            executionMode = BuildStep.ExecutionMode.DEFAULT
             scriptContent = """
                 java -version
                 
@@ -383,6 +385,7 @@ object Build : BuildType({
         script {
             name = "Output secret"
             enabled = false
+            executionMode = BuildStep.ExecutionMode.DEFAULT
             scriptContent = "echo %vaultConnection2% > meias.txt"
         }
     }
@@ -423,6 +426,7 @@ object PerforceLocalhost1666perforceStreamTcQaMavenProjectTcQaMavenMainline : Pe
     workspaceOptions = ""
     p4Path = "/mnt/agent/plugins/perforceDistributor/p4files/p4.linux.64"
     param("password", "TeamCityTestAutomation2023")
+    param("client-mapping", "//depot/... //team-city-agent/...")
 })
 
 
@@ -459,6 +463,7 @@ object TeamcityAwsLambdaPluginExample_Build : BuildType({
         }
         script {
             id = "simpleRunner"
+            executionMode = BuildStep.ExecutionMode.DEFAULT
             scriptContent = "aws sts get-caller-identity"
         }
     }
