@@ -244,6 +244,7 @@ project {
             param("profileName", "meow")
             param("executorType", "KubernetesExecutor")
             param("connectionId", "PROJECT_EXT_14")
+            param("enabled", "false")
         }
         feature {
             id = "PROJECT_EXT_36"
@@ -252,6 +253,7 @@ project {
             param("executorType", "KubernetesExecutor")
             param("system.cloud.profile_id", "PROJECT_EXT_36")
             param("connectionId", "PROJECT_EXT_14")
+            param("enabled", "false")
         }
         buildMetrics {
             id = "PROJECT_EXT_7"
