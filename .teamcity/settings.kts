@@ -236,6 +236,7 @@ project {
                       # Please refrain from adding new containers, as those can't be added to your build
                     - name: template-container
             """.trimIndent())
+            param("enabled", "false")
         }
         feature {
             id = "PROJECT_EXT_33"
