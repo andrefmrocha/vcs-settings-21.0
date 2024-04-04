@@ -392,7 +392,7 @@ object Build : BuildType({
         }
         script {
             id = "simpleRunner"
-            scriptContent = "echo %remoteParam% > meow.txt"
+            scriptContent = "echo '%remoteParam%' > meow.txt"
         }
     }
 
