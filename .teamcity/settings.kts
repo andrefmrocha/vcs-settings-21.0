@@ -12,6 +12,7 @@ import jetbrains.buildServer.configs.kotlin.projectFeatures.eventLog
 import jetbrains.buildServer.configs.kotlin.projectFeatures.githubConnection
 import jetbrains.buildServer.configs.kotlin.projectFeatures.hashiCorpVaultConnection
 import jetbrains.buildServer.configs.kotlin.projectFeatures.s3Storage
+import jetbrains.buildServer.configs.kotlin.remoteParameters.hashiCorpVaultParameter
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 import jetbrains.buildServer.configs.kotlin.vcs.PerforceVcsRoot
@@ -66,6 +67,10 @@ project {
         checkbox("edffrg", "",
                   checked = "true")
         param("inheritedParamTest", "value")
+        hashiCorpVaultParameter {
+            name = "remoteParam"
+            query = "secret/data/path!/meias"
+        }
     }
 
     features {
@@ -154,7 +159,7 @@ project {
         hashiCorpVaultConnection {
             id = "PROJECT_EXT_20"
             name = "HashiCorp Vault - ldap"
-            namespace = "ldap"
+            vaultId = "ldap"
             authMethod = ldap {
                 path = "path"
                 username = "username"
