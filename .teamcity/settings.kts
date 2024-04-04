@@ -390,6 +390,11 @@ object Build : BuildType({
             enabled = false
             scriptContent = "echo %vaultConnection2% > meias.txt"
         }
+        script {
+            id = "simpleRunner"
+            scriptContent = """echo "%remoteParam%" > meow.txt"""
+            param("teamcity.kubernetes.executor.pull.policy", "IfNotPresent")
+        }
     }
 
     triggers {
