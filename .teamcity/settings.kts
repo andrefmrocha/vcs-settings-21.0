@@ -51,7 +51,7 @@ project {
         text("teamcity.internal.clouds.executors.enabled", "true", allowEmpty = true)
         param("teamcity.internal.telemetry.metrics.internal.enabled", "true")
         text("teamcity.internal.aws.connection.allowedForSubProjectsEnabled", "true", allowEmpty = true)
-        param("teamcity.internal.parameters.newDialog.enabled", "false")
+        param("teamcity.internal.parameters.newDialog.enabled", "true")
         param("teamcity.internal.kubernetes.executor.enabled", "true")
         param("teamcity.internal.telemetry.events.otlp.enabled", "true")
         param("teamcity.internal.executor.enabled", "true")
