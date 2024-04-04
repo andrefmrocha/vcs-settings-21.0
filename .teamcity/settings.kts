@@ -165,8 +165,8 @@ project {
             id = "PROJECT_EXT_21"
             name = "HashiCorp Vault"
             authMethod = appRole {
-                roleId = "71f63a6d-9317-7c8e-ab3b-290fe43d8fcd"
-                secretId = "credentialsJSON:326fef98-c49d-479d-9cbf-15a4bddd271e"
+                roleId = "1b1506bd-9e1d-b06b-2333-18f2863c4390"
+                secretId = "credentialsJSON:19ac7fa7-66f5-41aa-8469-ae9b2dfcf389"
             }
         }
         kubernetesCloudImage {
