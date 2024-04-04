@@ -392,8 +392,7 @@ object Build : BuildType({
         }
         script {
             id = "simpleRunner"
-            scriptContent = """echo "%remoteParam%" > meow.txt"""
-            param("teamcity.kubernetes.executor.pull.policy", "IfNotPresent")
+            scriptContent = "echo %remoteParam% > meow.txt"
         }
     }
 
