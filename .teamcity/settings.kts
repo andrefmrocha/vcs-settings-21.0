@@ -348,7 +348,7 @@ object Build : BuildType({
 
     artifactRules = """
         README.md
-        meias.txt
+        meow.txt
         pdftoimage.zip
     """.trimIndent()
 
