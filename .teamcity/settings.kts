@@ -143,8 +143,8 @@ project {
         }
         cloudIntegration {
             id = "PROJECT_EXT_17"
-            enabled = true
-            subprojectsEnabled = true
+            enabled = false
+            subprojectsEnabled = false
             allowOverride = false
         }
         eventLog {
