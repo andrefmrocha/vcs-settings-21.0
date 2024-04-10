@@ -153,7 +153,7 @@ project {
             id = "PROJECT_EXT_2"
             enabled = true
             storageDays = 5
-            endpointUrl = "http://localhost:4317"
+            endpointUrl = "http://localhost:4318/v1/logs"
             sslCertificate = ""
             headers = ""
             param("telemetry.otlp.endpoint.gzip", "false")
