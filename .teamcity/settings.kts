@@ -1,6 +1,7 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.amazonEC2CloudImage
 import jetbrains.buildServer.configs.kotlin.amazonEC2CloudProfile
+import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.kubernetesCloudImage
 import jetbrains.buildServer.configs.kotlin.kubernetesCloudProfile
@@ -39,7 +40,7 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 'Debug' option is available in the context menu for the task.
 */
 
-version = "2023.11"
+version = "2024.03"
 
 project {
 
@@ -151,7 +152,7 @@ project {
             id = "PROJECT_EXT_2"
             enabled = true
             storageDays = 5
-            endpointUrl = ""
+            endpointUrl = "http://localhost:4318"
             sslCertificate = ""
             headers = ""
             param("telemetry.otlp.endpoint.gzip", "false")
@@ -453,18 +454,10 @@ object TeamcityAwsLambdaPluginExample_Build : BuildType({
     }
 
     steps {
-        step {
-            type = "gradle-runner"
+        gradle {
             enabled = false
-            executionMode = BuildStep.ExecutionMode.DEFAULT
-            param("teamcity.coverage.idea.includePatterns", "*")
-            param("ui.gradleRunner.gradle.wrapper.useWrapper", "true")
-            param("ui.gradleRunner.gradle.tasks.names", "clean build")
-            param("teamcity.coverage.jacoco.patterns", "+:*")
-            param("ui.gradleRunner.gradle.wrapper.path", "")
-            param("teamcity.coverage.emma.instr.parameters", "-ix -*Test*")
-            param("teamcity.coverage.emma.include.source", "true")
-            param("teamcity.tool.jacoco", "%teamcity.tool.jacoco.DEFAULT%")
+            tasks = "clean build"
+            gradleWrapperPath = ""
         }
         script {
             id = "simpleRunner"
@@ -513,17 +506,9 @@ object TeamcityAwsLambdaPluginExample_TeamcityAwsLambdaPluginExample_Build : Bui
     }
 
     steps {
-        step {
-            type = "gradle-runner"
-            executionMode = BuildStep.ExecutionMode.DEFAULT
-            param("teamcity.coverage.idea.includePatterns", "*")
-            param("ui.gradleRunner.gradle.wrapper.useWrapper", "true")
-            param("ui.gradleRunner.gradle.tasks.names", "clean build")
-            param("teamcity.coverage.jacoco.patterns", "+:*")
-            param("ui.gradleRunner.gradle.wrapper.path", "")
-            param("teamcity.coverage.emma.instr.parameters", "-ix -*Test*")
-            param("teamcity.coverage.emma.include.source", "true")
-            param("teamcity.tool.jacoco", "%teamcity.tool.jacoco.DEFAULT%")
+        gradle {
+            tasks = "clean build"
+            gradleWrapperPath = ""
         }
     }
 
