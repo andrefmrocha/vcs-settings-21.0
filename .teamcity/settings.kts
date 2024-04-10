@@ -52,7 +52,7 @@ project {
     params {
         text("teamcity.internal.clouds.executors.enabled", "true", allowEmpty = true)
         param("teamcity.internal.telemetry.metrics.internal.enabled", "true")
-        param("teamcity.internal.telemetry.events.useHttp", "false")
+        param("teamcity.internal.telemetry.events.useHttp", "true")
         text("teamcity.internal.aws.connection.allowedForSubProjectsEnabled", "true", allowEmpty = true)
         param("teamcity.internal.parameters.newDialog.enabled", "true")
         param("teamcity.internal.kubernetes.executor.enabled", "true")
