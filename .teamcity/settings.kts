@@ -145,8 +145,8 @@ project {
         }
         cloudIntegration {
             id = "PROJECT_EXT_17"
-            enabled = false
-            subprojectsEnabled = false
+            enabled = true
+            subprojectsEnabled = true
             allowOverride = false
         }
         eventLog {
@@ -161,7 +161,7 @@ project {
         hashiCorpVaultConnection {
             id = "PROJECT_EXT_20"
             name = "HashiCorp Vault - ldap"
-            vaultId = "ldap"
+            namespace = "ldap"
             authMethod = ldap {
                 path = "path"
                 username = "username"
