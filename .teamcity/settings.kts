@@ -218,7 +218,7 @@ project {
                   containers:
                     - name: template-container
             """.trimIndent())
-            param("enabled", "false")
+            param("enabled", "true")
         }
         feature {
             id = "PROJECT_EXT_32"
