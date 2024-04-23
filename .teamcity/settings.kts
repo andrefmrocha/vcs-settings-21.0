@@ -385,8 +385,7 @@ object Build : BuildType({
                 
                 echo "##teamcity[telemetryEvent eventName='coolAndImportant' tag1='tag1' tag2='${'$'}JAVA_MAJOR_VERSION']"
             """.trimIndent()
-            param("teamcity.kubernetes.executor.container.image", "python")
-            param("teamcity.kubernetes.executor.pull.policy", "IfNotPresent")
+            dockerImage = "meow"
         }
         script {
             name = "Output secret"
