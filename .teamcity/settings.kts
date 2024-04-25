@@ -153,7 +153,7 @@ project {
             id = "PROJECT_EXT_2"
             enabled = true
             storageDays = 5
-            endpointUrl = "http://localhost:4318/v1/logs"
+            endpointUrl = ""
             sslCertificate = ""
             headers = ""
             param("telemetry.otlp.endpoint.gzip", "false")
@@ -161,7 +161,7 @@ project {
         hashiCorpVaultConnection {
             id = "PROJECT_EXT_20"
             name = "HashiCorp Vault - ldap"
-            vaultId = "ldap"
+            namespace = "ldap"
             authMethod = ldap {
                 path = "path"
                 username = "username"
