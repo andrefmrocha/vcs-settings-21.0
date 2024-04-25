@@ -411,6 +411,7 @@ object Build : BuildType({
         }
         feature {
             type = "KubernetesExecutor"
+            param("teamcity.kubernetes.executor.container.storageSize", "5Gi")
             param("connectionId", "PROJECT_EXT_34")
         }
     }
