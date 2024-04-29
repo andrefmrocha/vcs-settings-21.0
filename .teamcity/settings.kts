@@ -161,7 +161,7 @@ project {
         hashiCorpVaultConnection {
             id = "PROJECT_EXT_20"
             name = "HashiCorp Vault - ldap"
-            namespace = "ldap"
+            vaultId = "ldap"
             authMethod = ldap {
                 path = "path"
                 username = "username"
@@ -411,6 +411,7 @@ object Build : BuildType({
         }
         feature {
             type = "KubernetesExecutor"
+            enabled = false
             param("teamcity.kubernetes.executor.container.storageSize", "5Gi")
             param("connectionId", "PROJECT_EXT_34")
         }
