@@ -51,6 +51,8 @@ project {
 
     params {
         text("teamcity.internal.clouds.executors.enabled", "true", allowEmpty = true)
+        select("selectTest", "",
+                options = listOf("value", "meow", "bananas"))
         param("teamcity.internal.telemetry.metrics.internal.enabled", "true")
         param("teamcity.internal.telemetry.events.useHttp", "true")
         text("teamcity.internal.aws.connection.allowedForSubProjectsEnabled", "true", allowEmpty = true)
@@ -59,8 +61,6 @@ project {
         param("teamcity.internal.telemetry.events.otlp.enabled", "true")
         param("teamcity.internal.executor.enabled", "true")
         param("teamcity.internal.telemetry.traces.internal.enabled", "true")
-        select("meow", "",
-                options = listOf("value", "meow", "bananas"))
         text("Regex", "regex",
               regex = "regex")
         param("system.meow", "meowww")
