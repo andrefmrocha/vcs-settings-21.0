@@ -49,6 +49,8 @@ project {
 
     buildType(Build)
 
+    template(TemplateTests)
+
     params {
         text("teamcity.internal.clouds.executors.enabled", "true", allowEmpty = true)
         select("selectTest", "",
@@ -349,7 +351,36 @@ project {
 }
 
 object Build : BuildType({
+    templates(TemplateTests)
     name = "Build"
+
+    params {
+        param("inheritedParamTest", "meow")
+    }
+
+    steps {
+        script {
+            name = "Output secret"
+            id = "RUNNER_3"
+            enabled = false
+            scriptContent = "echo %vaultConnection2% > meias.txt"
+        }
+        stepsOrder = arrayListOf("RUNNER_1", "RUNNER_2", "RUNNER_3", "simpleRunner")
+    }
+
+    features {
+        feature {
+            id = "BUILD_EXT_2"
+            type = "KubernetesExecutor"
+            enabled = false
+            param("teamcity.kubernetes.executor.container.storageSize", "5Gi")
+            param("connectionId", "PROJECT_EXT_34")
+        }
+    }
+})
+
+object TemplateTests : Template({
+    name = "Template Tests"
 
     artifactRules = """
         README.md
@@ -374,6 +405,7 @@ object Build : BuildType({
     steps {
         script {
             name = "Run In Java 11"
+            id = "RUNNER_1"
             scriptContent = """
                 java -version
                 
@@ -384,6 +416,7 @@ object Build : BuildType({
         }
         script {
             name = "Run In Python"
+            id = "RUNNER_2"
             scriptContent = """
                 java -version
                 
@@ -393,11 +426,6 @@ object Build : BuildType({
             """.trimIndent()
         }
         script {
-            name = "Output secret"
-            enabled = false
-            scriptContent = "echo %vaultConnection2% > meias.txt"
-        }
-        script {
             id = "simpleRunner"
             scriptContent = "echo '%remoteParam%' > meow.txt"
         }
@@ -405,19 +433,15 @@ object Build : BuildType({
 
     triggers {
         vcs {
+            id = "TRIGGER_1"
         }
     }
 
     features {
         feature {
+            id = "BUILD_EXT_1"
             type = "PROVIDE_AWS_CREDS"
             param("awsConnectionId", "AmazonWebServicesAws_2")
-        }
-        feature {
-            type = "KubernetesExecutor"
-            enabled = false
-            param("teamcity.kubernetes.executor.container.storageSize", "5Gi")
-            param("connectionId", "PROJECT_EXT_34")
         }
     }
 })
