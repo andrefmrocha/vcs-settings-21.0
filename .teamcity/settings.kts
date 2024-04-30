@@ -358,6 +358,10 @@ object Build : BuildType({
     """.trimIndent()
 
     params {
+        hashiCorpVaultParameter {
+            name = "remoteParamTemplate"
+            query = "meowmeow"
+        }
         param("teamcity.vault.set.env", "false")
         param("inheritedParamTest", "meow")
         param("teamcity.vault.ssh.set.env", "true")
