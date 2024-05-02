@@ -365,6 +365,19 @@ object Build : BuildType({
             enabled = false
             scriptContent = "echo %vaultConnection2% > meias.txt"
         }
+        script {
+            name = "Run In Java 11"
+            id = "RUNNER_1"
+            scriptContent = """
+                java -version
+                
+                echo "MAGIC ${'$'}FOO"
+                
+                echo "##teamcity[telemetryEvent eventName='automation-event' autoKey='automation']"
+            """.trimIndent()
+            param("teamcity.kubernetes.executor.container.image", "meow")
+            param("teamcity.kubernetes.executor.pull.policy", "IfNotPresent")
+        }
         stepsOrder = arrayListOf("RUNNER_1", "RUNNER_2", "RUNNER_3", "simpleRunner")
     }
 
