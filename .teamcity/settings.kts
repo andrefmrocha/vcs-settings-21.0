@@ -376,12 +376,6 @@ object Build : BuildType({
 
     steps {
         script {
-            name = "Output secret"
-            id = "RUNNER_3"
-            enabled = false
-            scriptContent = "echo %vaultConnection2% > meias.txt"
-        }
-        script {
             name = "Run In Java 11"
             id = "RUNNER_1"
             scriptContent = """
@@ -393,6 +387,12 @@ object Build : BuildType({
             """.trimIndent()
             param("teamcity.kubernetes.executor.container.image", "meow")
             param("teamcity.kubernetes.executor.pull.policy", "IfNotPresent")
+        }
+        script {
+            name = "Output secret"
+            id = "RUNNER_3"
+            enabled = false
+            scriptContent = "echo %vaultConnection2% > meias.txt"
         }
         stepsOrder = arrayListOf("RUNNER_1", "RUNNER_2", "RUNNER_3", "simpleRunner")
     }
@@ -525,13 +525,6 @@ object TeamcityAwsLambdaPluginExample_Build : BuildType({
 
     triggers {
         vcs {
-        }
-    }
-
-    features {
-        feature {
-            type = "PROVIDE_AWS_CREDS"
-            param("awsConnectionId", "AmazonWebServicesAws")
         }
     }
 })
