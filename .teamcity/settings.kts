@@ -385,7 +385,6 @@ object Build : BuildType({
                 
                 echo "##teamcity[telemetryEvent eventName='automation-event' autoKey='automation']"
             """.trimIndent()
-            param("teamcity.kubernetes.executor.container.image", "meow")
             param("teamcity.kubernetes.executor.pull.policy", "IfNotPresent")
         }
         script {
