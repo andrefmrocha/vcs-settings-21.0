@@ -165,7 +165,7 @@ project {
         hashiCorpVaultConnection {
             id = "PROJECT_EXT_20"
             name = "HashiCorp Vault - ldap"
-            vaultId = "ldap"
+            namespace = "ldap"
             authMethod = ldap {
                 path = "path"
                 username = "username"
@@ -222,7 +222,7 @@ project {
                   containers:
                     - name: template-container
             """.trimIndent())
-            param("enabled", "false")
+            param("buildsLimit", "1")
         }
         feature {
             id = "PROJECT_EXT_32"
