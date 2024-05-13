@@ -293,7 +293,7 @@ project {
             id = "PROJECT_EXT_37"
             type = "OAuthProvider"
             param("secure:authToken", "credentialsJSON:dd5d87a0-818d-43fd-8eb6-f712c555ea17")
-            param("displayName", "Kubernetes Connection")
+            param("displayName", "EKS")
             param("apiServerUrl", "https://6C60846089AD8C095BED3B18FF6D84A0.gr7.eu-west-1.eks.amazonaws.com")
             param("authStrategy", "token")
             param("namespace", "executor-pods")
