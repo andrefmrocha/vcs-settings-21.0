@@ -289,6 +289,17 @@ project {
             param("connectionId", "PROJECT_EXT_14")
             param("enabled", "false")
         }
+        feature {
+            id = "PROJECT_EXT_37"
+            type = "OAuthProvider"
+            param("secure:authToken", "credentialsJSON:dd5d87a0-818d-43fd-8eb6-f712c555ea17")
+            param("displayName", "Kubernetes Connection")
+            param("apiServerUrl", "https://6C60846089AD8C095BED3B18FF6D84A0.gr7.eu-west-1.eks.amazonaws.com")
+            param("authStrategy", "token")
+            param("namespace", "executor-pods")
+            param("secure:caCertData", "credentialsJSON:acf2b92c-1b85-4a4a-98b4-05e194d21731")
+            param("providerType", "KubernetesConnection")
+        }
         buildMetrics {
             id = "PROJECT_EXT_7"
             param("telemetry.metrics.enabled", "false")
