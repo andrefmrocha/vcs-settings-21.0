@@ -412,7 +412,7 @@ object Build : BuildType({
             id = "BUILD_EXT_2"
             type = "KubernetesExecutor"
             param("teamcity.kubernetes.executor.container.storageSize", "5Gi")
-            param("connectionId", "PROJECT_EXT_34")
+            param("connectionId", "PROJECT_EXT_37")
         }
     }
 })
