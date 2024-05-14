@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2021.1/project-config.xsd">
+  <name>Template Tests</name>
+  <settings>
+    <options>
+      <option name="artifactRules" value="README.md&#xA;meow.txt&#xA;pdftoimage.zip" />
+    </options>
+    <parameters>
+      <param name="inheritedParamTest" value="meow" />
+      <param name="remoteParamTemplate" value="" spec="remote remoteType='hashicorp-vault' teamcity_hashicorp_vault_vaultQuery='meowmeow'" />
+      <param name="teamcity.vault.set.env" value="false" />
+      <param name="teamcity.vault.ssh.set.env" value="true" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_1" name="Run In Java 11" type="simpleRunner">
+        <parameters>
+          <param name="script.content"><![CDATA[java -version
+
+echo "MAGIC $FOO"
+
+echo "##teamcity[telemetryEvent eventName='automation-event' autoKey='automation']"]]></param>
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_2" name="Run In Python" type="simpleRunner">
+        <parameters>
+          <param name="script.content"><![CDATA[java -version
+
+JAVA_MAJOR_VERSION=$(java -version 2>&1 | grep -oP 'version "?(1\.)?\K\d+' || true)
+
+echo "##teamcity[telemetryEvent eventName='coolAndImportant' tag1='tag1' tag2='$JAVA_MAJOR_VERSION']"]]></param>
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+      <runner id="simpleRunner" name="" type="simpleRunner">
+        <parameters>
+          <param name="script.content" value="echo '%remoteParam%' &gt; meow.txt" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="KubernetesExample_HttpsGithubComAndrefmrochaTeamcityAwsLambdaPluginExampleGitRefsHeadsMain" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="TRIGGER_1" type="vcsTrigger">
+        <parameters>
+          <param name="branchFilter" value="+:*" />
+          <param name="enableQueueOptimization" value="true" />
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <build-extensions>
+      <extension id="BUILD_EXT_1" type="PROVIDE_AWS_CREDS">
+        <parameters>
+          <param name="awsConnectionId" value="AmazonWebServicesAws_2" />
+          <param name="awsSessionDuration" value="60" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</template>
+

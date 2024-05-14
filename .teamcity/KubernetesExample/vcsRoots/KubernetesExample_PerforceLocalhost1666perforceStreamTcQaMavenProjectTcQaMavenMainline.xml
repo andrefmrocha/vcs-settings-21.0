@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vcs-root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="" type="perforce" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2021.1/project-config.xsd">
+  <name>perforce: localhost:1666: perforce stream: '//tc-qa-maven-project/tc-qa-maven-mainline'</name>
+  <param name="client-mapping" value="//depot/... //team-city-agent/..." />
+  <param name="p4-exe" value="/mnt/agent/plugins/perforceDistributor/p4files/p4.linux.64" />
+  <param name="password" value="TeamCityTestAutomation2023" />
+  <param name="port" value="localhost:1666" />
+  <param name="stream" value="//tc-qa-maven-project/tc-qa-maven-mainline" />
+  <param name="use-client" value="stream" />
+  <param name="user" value="teamcity-testers" />
+  <param name="workspace-options" value="" />
+</vcs-root>
+

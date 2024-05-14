@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2021.1/project-config.xsd">
+  <name>Build</name>
+  <description />
+  <settings ref="KubernetesExample_TemplateTests">
+    <disabled-settings>
+      <setting-ref ref="RUNNER_3" />
+    </disabled-settings>
+    <parameters>
+      <param name="inheritedParamTest" value="meow" />
+    </parameters>
+    <build-runners order="RUNNER_1, RUNNER_2, RUNNER_3, simpleRunner">
+      <runner id="RUNNER_1" name="Run In Java 11" type="simpleRunner">
+        <parameters>
+          <param name="script.content"><![CDATA[java -version
+
+echo "MAGIC $FOO"
+
+echo "##teamcity[telemetryEvent eventName='automation-event' autoKey='automation']"]]></param>
+          <param name="teamcity.kubernetes.executor.pull.policy" value="IfNotPresent" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_3" name="Output secret" type="simpleRunner">
+        <parameters>
+          <param name="script.content" value="echo %vaultConnection2% &gt; meias.txt" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings />
+    <requirements />
+    <build-triggers />
+    <build-extensions>
+      <extension id="BUILD_EXT_2" type="KubernetesExecutor">
+        <parameters>
+          <param name="connectionId" value="PROJECT_EXT_37" />
+          <param name="teamcity.kubernetes.executor.container.storageSize" value="5Gi" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</build-type>
+
