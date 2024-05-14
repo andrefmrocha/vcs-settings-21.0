@@ -222,7 +222,7 @@ project {
                   containers:
                     - name: template-container
             """.trimIndent())
-            param("buildsLimit", "1")
+            param("buildsLimit", "2")
         }
         feature {
             id = "PROJECT_EXT_32"
